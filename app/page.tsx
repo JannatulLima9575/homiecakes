@@ -162,9 +162,7 @@ export default function Home() {
           className="flex flex-col items-center justify-center text-center px-4 min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vlg:min-h-[75vh] animate-fadeIn"
         >
           {/* Title */}
-          <h1
-            className="font-bold text-pink-600 text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight animate-slideUp"
-          >
+          <h1 className="font-bold text-pink-600 text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight animate-slideUp">
             Freshly Baked Happiness 🎂
           </h1>
 
@@ -253,14 +251,73 @@ export default function Home() {
       </section>
 
       {/* ================= Categories ================= */}
-      <section id="categories" className="py-20 bg-white text-center">
-        <h2 className="text-3xl font-bold text-pink-600">Our Categories</h2>
+      <section id="categories" className="py-16 bg-white text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-pink-600">
+          Choose Your Cake
+        </h2>
 
-        <div className="mt-10 grid md:grid-cols-4 gap-6 px-6">
-          <div className="bg-pink-100 p-6 rounded-xl">Chocolate Cakes</div>
-          <div className="bg-pink-100 p-6 rounded-xl">Birthday Cakes</div>
-          <div className="bg-pink-100 p-6 rounded-xl">Wedding Cakes</div>
-          <div className="bg-pink-100 p-6 rounded-xl">Custom Cakes</div>
+        <p className="text-blue-900 mt-2">1 Pound Regular Cake Price</p>
+
+        <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
+          {/* Vanilla Cake */}
+          <div className="bg-pink-50 rounded-xl shadow-md overflow-hidden transition">
+            <div className="relative w-full h-56">
+              <Image
+                src="/venila.jpg"
+                alt="Vanilla Cake"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <div className="p-6 text-left">
+              <h3 className="text-xl font-semibold">Vanilla Cake</h3>
+              <p className="text-pink-600 font-bold mt-2">650 TK / Pound</p>
+            </div>
+          </div>
+
+          {/* Strawberry Mango Cake */}
+          <div className="bg-pink-50 rounded-xl shadow-md overflow-hidden transition">
+            <div className="relative w-full h-56">
+              <Image
+                src="/strawberry.jpg"
+                alt="Strawberry Cake"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <div className="p-6 text-left">
+              <h3 className="text-xl font-semibold">Strawberry / Mango Cake</h3>
+              <p className="text-pink-600 font-bold mt-2">700 TK / Pound</p>
+            </div>
+          </div>
+
+          {/* Chocolate Cake */}
+          <div className="bg-pink-50 rounded-xl shadow-md overflow-hidden transition">
+            <div className="relative w-full h-56">
+              <Image
+                src="/chocolate.jpg"
+                alt="Chocolate Cake"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <div className="p-6 text-left">
+              <h3 className="text-xl font-semibold">Chocolate Cake</h3>
+              <p className="text-pink-600 font-bold mt-2">750 TK / Pound</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Custom Cake Info */}
+        <div className="mt-10 text-blue-900 text-lg px-6">
+          <p className="font-bold">Custom Cake Available 🎂</p>
+
+          <p className="text-sm mt-2 ">
+            Customized cakes price will be added based on materials and design.
+          </p>
         </div>
       </section>
 
