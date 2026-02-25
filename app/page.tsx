@@ -339,29 +339,12 @@ export default function Home() {
         </form>
       </section>
 
-      {/* ================= Contact ================= */}
-      <section id="contact" className="py-20 bg-white text-center">
-        <h2 className="text-3xl font-bold text-pink-600">Get in Touch</h2>
-
-        <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-          Have questions? Reach out to us!
+      {/* ================= Footer ================= */}
+      <section id="footer" className="py-4 bg-white text-center">
+          {/* footer */}
+        <p className="mt-4 text-blue-900 max-w-xl mx-auto">
+          &copy; {new Date().getFullYear()} <a className="hover:underline text-pink-600" href="https://jannatullima.vercel.app/">Jannatul Lima</a>. All rights reserved.
         </p>
-
-        <div className="mt-6 flex justify-center gap-6">
-          <a
-            href="mailto:contact@homiecakes.com"
-            className="text-pink-500 hover:underline"
-          >
-            Email Us
-          </a>
-
-          <a
-            href="tel:+8801234567890"
-            className="text-pink-500 hover:underline"
-          >
-            Call Us
-          </a>
-        </div>
       </section>
     </main>
   );
