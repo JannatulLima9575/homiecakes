@@ -7,15 +7,12 @@ import { FaFacebook, FaPhone, FaTiktok, FaBars, FaTimes } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 export default function Home() {
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <main className="scroll-smooth">
-
       {/* ================= HERO + NAVBAR WRAPPER ================= */}
       <section className="relative min-h-screen text-center">
-
         {/* Background Image */}
         <Image
           src="/banner.jpg"
@@ -28,13 +25,11 @@ export default function Home() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-white/70 -z-10"></div>
 
-
         {/* ================= TOP NAVBAR ================= */}
 
         {/* Upper Pink Bar */}
         <div className="bg-pink-500 text-white">
           <div className="container mx-auto text-sm py-2 px-4 flex flex-col md:flex-row justify-between items-center">
-
             <div className="flex items-center gap-3 flex-wrap justify-center">
               <FaPhone />
               <span>01304-857347</span>
@@ -44,33 +39,37 @@ export default function Home() {
             </div>
 
             <div className="flex gap-4 mt-2 md:mt-0">
-              <a href="https://www.facebook.com/homiecakes02" className="hover:opacity-80">
+              <a
+                href="https://www.facebook.com/homiecakes02"
+                className="hover:opacity-80"
+              >
                 <FaFacebook />
               </a>
 
-              <a href="https://www.instagram.com/homiecakes02" className="hover:opacity-80">
+              <a
+                href="https://www.instagram.com/homiecakes02"
+                className="hover:opacity-80"
+              >
                 <BsInstagram />
               </a>
 
-              <a href="https://www.tiktok.com/@homie.cakes" className="hover:opacity-80">
+              <a
+                href="https://www.tiktok.com/@homie.cakes"
+                className="hover:opacity-80"
+              >
                 <FaTiktok />
               </a>
             </div>
-
           </div>
         </div>
 
-
         {/* Lower White Navbar */}
         <div className="bg-white/90 backdrop-blur-md relative">
-
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-
             {/* Logo */}
             <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-pink-600">
               HomieCakes 🎂
             </h1>
-
 
             {/* Desktop Menu */}
             <ul className="hidden md:flex gap-6 font-medium text-blue-900">
@@ -99,7 +98,6 @@ export default function Home() {
               </li>
             </ul>
 
-
             {/* Mobile Menu Icon */}
             <div
               className="md:hidden text-2xl text-pink-600 cursor-pointer"
@@ -107,17 +105,12 @@ export default function Home() {
             >
               {menuOpen ? <FaTimes /> : <FaBars />}
             </div>
-
           </div>
-
 
           {/* Mobile Dropdown Menu */}
           {menuOpen && (
-
             <div className="md:hidden bg-pink-500 border-t">
-
               <ul className="flex flex-col text-white font-medium">
-
                 <li className="">
                   <a
                     href="#home"
@@ -157,46 +150,106 @@ export default function Home() {
                     Contact
                   </a>
                 </li>
-
               </ul>
-
             </div>
-
           )}
-
         </div>
 
         {/* ================= HERO CONTENT ================= */}
 
         <div
           id="home"
-          className="flex flex-col items-center justify-center px-4 pt-32"
+          className="flex flex-col items-center justify-center text-center px-4 min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vlg:min-h-[75vh] animate-fadeIn"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-pink-600">
+          {/* Title */}
+          <h1
+            className="font-bold text-pink-600 text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight animate-slideUp"
+          >
             Freshly Baked Happiness 🎂
           </h1>
 
-          <p className="mt-4 text-gray-700 max-w-xl">
+          {/* Description */}
+          <p
+            className="
+    mt-4
+    text-blue-900
+    max-w-xl
+    
+    text-sm
+    sm:text-base
+    md:text-lg
+    
+    animate-slideUp delay-200
+    "
+          >
             Homemade cakes made with love for every celebration.
           </p>
 
-          <div className="mt-6 flex gap-4 flex-wrap justify-center">
+          {/* Buttons */}
+          <div
+            className="
+    mt-6 
+    flex 
+    gap-3 
+    sm:gap-4 
+    flex-wrap 
+    justify-center
+    
+    animate-slideUp delay-300
+    "
+          >
             <a
               href="#categories"
-              className="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition"
+              className="
+       border
+      border-pink-500
+      text-pink-500
+      
+      px-5 py-2.5
+      sm:px-6 sm:py-3
+      
+      rounded-full
+      
+      text-sm
+      sm:text-base
+      
+      hover:bg-pink-600 hover:text-white
+      
+      transition
+      duration-300
+      hover:scale-105
+      "
             >
               View Categories
             </a>
 
             <a
               href="#order"
-              className="border border-pink-500 text-pink-500 px-6 py-3 rounded-full hover:bg-pink-500 hover:text-white transition"
+              className="
+      border
+      border-pink-500
+      text-pink-500
+      
+      px-5 py-2.5
+      sm:px-6 sm:py-3
+      
+      rounded-full
+      
+      text-sm
+      sm:text-base
+      
+      hover:bg-pink-500
+      hover:text-white
+      
+      transition
+      duration-300
+      hover:scale-105
+      "
             >
               Order Now
             </a>
           </div>
         </div>
-
       </section>
 
       {/* ================= Categories ================= */}
@@ -253,7 +306,6 @@ export default function Home() {
           </a>
         </div>
       </section>
-
     </main>
   );
 }
