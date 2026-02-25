@@ -1,16 +1,22 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { BsInstagram } from "react-icons/bs";
-import { FaFacebook, FaPhone, FaTiktok } from "react-icons/fa";
+import { FaFacebook, FaPhone, FaTiktok, FaBars, FaTimes } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 export default function Home() {
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <main className="scroll-smooth">
 
       {/* ================= HERO + NAVBAR WRAPPER ================= */}
       <section className="relative min-h-screen text-center">
 
-        {/* Background Image (Navbar + Hero duitar jonno) */}
+        {/* Background Image */}
         <Image
           src="/banner.jpg"
           alt="Background"
@@ -19,44 +25,145 @@ export default function Home() {
           className="object-cover -z-10"
         />
 
-        {/* Overlay (light pink effect) */}
+        {/* Overlay */}
         <div className="absolute inset-0 bg-white/70 -z-10"></div>
+
 
         {/* ================= TOP NAVBAR ================= */}
 
         {/* Upper Pink Bar */}
-        <div className="bg-pink-500  text-white">
-          <div className="container mx-auto text-sm py-2 px-6 flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-2">
-            <FaPhone className="text-white" />
-            <span>01304-857347</span>
-            <MdEmail className="text-white" />
-            <span>homiecakes02@gmail.com</span>
-          </div>
-          <div className="flex gap-4 mt-2 md:mt-0">
-            <a href="https://www.facebook.com/homiecakes02" className="cursor-pointer hover:opacity-80"><FaFacebook className="text-white" /></a>
-            <a href="https://www.instagram.com/homiecakes02?igsh=MTduaW1jbG9hNDRhMw==" className="cursor-pointer hover:opacity-80"><BsInstagram className="text-white" /></a>
-            <a href="https://www.tiktok.com/@homie.cakes?_r=1&_t=ZS-94DA8nMf4Kq" className="cursor-pointer hover:opacity-80"><FaTiktok className="text-white" /></a>
-          </div>
+        <div className="bg-pink-500 text-white">
+          <div className="container mx-auto text-sm py-2 px-4 flex flex-col md:flex-row justify-between items-center">
+
+            <div className="flex items-center gap-3 flex-wrap justify-center">
+              <FaPhone />
+              <span>01304-857347</span>
+
+              <MdEmail />
+              <span>homiecakes02@gmail.com</span>
+            </div>
+
+            <div className="flex gap-4 mt-2 md:mt-0">
+              <a href="https://www.facebook.com/homiecakes02" className="hover:opacity-80">
+                <FaFacebook />
+              </a>
+
+              <a href="https://www.instagram.com/homiecakes02" className="hover:opacity-80">
+                <BsInstagram />
+              </a>
+
+              <a href="https://www.tiktok.com/@homie.cakes" className="hover:opacity-80">
+                <FaTiktok />
+              </a>
+            </div>
+
           </div>
         </div>
+
 
         {/* Lower White Navbar */}
-        <div className="bg-white/90 backdrop-blur-md shadow-md">
-          <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Logo */}
-          <h1 className="text-2xl font-bold text-pink-600">
-            HomieCakes 🎂
-          </h1>
+        <div className="bg-white/90 backdrop-blur-md relative">
 
-          {/* Menu */}
-          <ul className="hidden md:flex gap-6 font-medium text-gray-700">
-            <li><a href="#home" className="hover:text-pink-500">Home</a></li>
-            <li><a href="#categories" className="hover:text-pink-500">Categories</a></li>
-            <li><a href="#order" className="hover:text-pink-500">Order</a></li>
-            <li><a href="#contact" className="hover:text-pink-500">Contact</a></li>
-          </ul>
-        </div>
+          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+
+            {/* Logo */}
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-pink-600">
+              HomieCakes 🎂
+            </h1>
+
+
+            {/* Desktop Menu */}
+            <ul className="hidden md:flex gap-6 font-medium text-blue-900">
+              <li>
+                <a href="#home" className="hover:text-pink-500">
+                  Home
+                </a>
+              </li>
+
+              <li>
+                <a href="#categories" className="hover:text-pink-500">
+                  Categories
+                </a>
+              </li>
+
+              <li>
+                <a href="#order" className="hover:text-pink-500">
+                  Order
+                </a>
+              </li>
+
+              <li>
+                <a href="#contact" className="hover:text-pink-500">
+                  Contact
+                </a>
+              </li>
+            </ul>
+
+
+            {/* Mobile Menu Icon */}
+            <div
+              className="md:hidden text-2xl text-pink-600 cursor-pointer"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </div>
+
+          </div>
+
+
+          {/* Mobile Dropdown Menu */}
+          {menuOpen && (
+
+            <div className="md:hidden bg-pink-500 border-t">
+
+              <ul className="flex flex-col text-white font-medium">
+
+                <li className="">
+                  <a
+                    href="#home"
+                    className="block py-3 px-6 hover:bg-pink-600"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Home
+                  </a>
+                </li>
+
+                <li className="">
+                  <a
+                    href="#categories"
+                    className="block py-3 px-6 hover:bg-pink-600"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Categories
+                  </a>
+                </li>
+
+                <li className="">
+                  <a
+                    href="#order"
+                    className="block py-3 px-6 hover:bg-pink-600"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Order
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#contact"
+                    className="block py-3 px-6 hover:bg-pink-600"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Contact
+                  </a>
+                </li>
+
+              </ul>
+
+            </div>
+
+          )}
+
         </div>
 
         {/* ================= HERO CONTENT ================= */}
