@@ -5,9 +5,14 @@ import { useState } from "react";
 import { BsInstagram } from "react-icons/bs";
 import { FaFacebook, FaPhone, FaTiktok, FaBars, FaTimes } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { galleryData } from "./data/galleryData";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  /* ===== Gallery Logic ===== */
+  const categories = Object.keys(galleryData);
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
 
   return (
     <main className="scroll-smooth">
@@ -323,55 +328,54 @@ export default function Home() {
 
 
       {/* ================= CATEGORY + GALLERY SECTION ================= */}
-<section id="categories" className="py-20 bg-gray-50">
+          <section id="categories" className="py-20 bg-gray-50">
 
-  <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6">
 
-    {/* ===== Category Buttons ===== */}
-    <div className="flex flex-wrap justify-center gap-4 mb-12">
-      {["Wedding", "Birthday", "Holud Night", "Anniversary", "Welcome", "Other"].map((cat, index) => (
-        <button
-          key={index}
-          className="px-6 py-2 border border-pink-500 text-pink-600 rounded-full hover:bg-pink-500 hover:text-white transition duration-300"
-        >
-          {cat}
-        </button>
-      ))}
-    </div>
+          {/* ===== Category Buttons ===== */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((cat, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-6 py-2 rounded-full border transition duration-300 
+                  ${
+                    activeCategory === cat
+                      ? "bg-pink-500 text-white border-pink-500"
+                      : "border-pink-500 text-pink-600 hover:bg-pink-500 hover:text-white"
+                  }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
 
-    {/* ===== Section Title ===== */}
-    <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-      Our Gallery
-    </h2>
+          {/* ===== Title ===== */}
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
+            Our Gallery
+          </h2>
 
-    {/* ===== Gallery Grid ===== */}
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {/* ===== Gallery Grid ===== */}
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-      {[
-        "/chocolate.jpg",
-        "/gallery2.jpg",
-        "/gallery3.jpg",
-        "/gallery4.jpg",
-        "/gallery5.jpg",
-        "/gallery6.jpg",
-      ].map((img, index) => (
-        <div
-          key={index}
-          className="relative h-60 overflow-hidden rounded-xl shadow-md group animate-slideLeft"
-        >
-          <Image
-            src={img}
-            alt="Cake"
-            fill
-            className="object-cover group-hover:scale-110 transition duration-500"
-          />
+            {galleryData[activeCategory].map((img, index) => (
+              <div
+                key={index}
+                className="relative h-60 overflow-hidden rounded-xl shadow-md group"
+              >
+                <Image
+                  src={img}
+                  alt="Cake"
+                  fill
+                  className="object-cover group-hover:scale-110 transition duration-500"
+                />
+              </div>
+            ))}
+
+          </div>
+
         </div>
-      ))}
-
-    </div>
-
-  </div>
-</section>
+      </section>
 
       {/* ================= Order ================= */}
       <section id="order" className="py-20 bg-pink-50 text-center">
