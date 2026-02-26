@@ -13,6 +13,7 @@ export default function Home() {
   /* ===== Gallery Logic ===== */
   const categories = Object.keys(galleryData);
   const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [showAll, setShowAll] = useState(false);
 
   return (
     <main className="scroll-smooth">
@@ -326,12 +327,9 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* ================= CATEGORY + GALLERY SECTION ================= */}
-          <section id="categories" className="py-20 bg-gray-50">
-
+      <section id="categories" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
-
           {/* ===== Category Buttons ===== */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map((cat, index) => (
@@ -357,23 +355,30 @@ export default function Home() {
 
           {/* ===== Gallery Grid ===== */}
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-
-            {galleryData[activeCategory].map((img, index) => (
+            {(showAll
+              ? galleryData[activeCategory]
+              : galleryData[activeCategory].slice(0, 3)
+            ).map((img, index) => (
               <div
                 key={index}
                 className="relative h-60 overflow-hidden rounded-xl shadow-md group"
               >
-                <Image
-                  src={img}
-                  alt="Cake"
-                  fill
-                  className="object-cover"
-                />
+                <Image src={img} alt="Cake" fill className="object-cover" />
               </div>
             ))}
-
           </div>
 
+          {/* ===== Show More Button ===== */}
+          {galleryData[activeCategory].length > 3 && (
+            <div className="text-center mt-10">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="px-6 py-2 bg-pink-500 text-white rounded-full hover:bg-white hover:border hover:border-pink-600 hover:text-pink-600 transition duration-300"
+              >
+                {showAll ? "Show Less" : "Show More"}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -397,9 +402,16 @@ export default function Home() {
 
       {/* ================= Footer ================= */}
       <section id="footer" className="py-4 bg-white text-center">
-          {/* footer */}
+        {/* footer */}
         <p className="mt-4 text-blue-900 max-w-xl mx-auto">
-          &copy; {new Date().getFullYear()} <a className="hover:underline text-pink-600" href="https://jannatullima.vercel.app/">Jannatul Lima</a>. All rights reserved.
+          &copy; {new Date().getFullYear()}{" "}
+          <a
+            className="hover:underline text-pink-600"
+            href="https://jannatullima.vercel.app/"
+          >
+            Jannatul Lima
+          </a>
+          . All rights reserved.
         </p>
       </section>
     </main>
