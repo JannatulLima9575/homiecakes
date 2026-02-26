@@ -4,15 +4,22 @@ import Image from "next/image";
 import { useState } from "react";
 import { BsInstagram } from "react-icons/bs";
 import { FaFacebook, FaPhone, FaTiktok, FaBars, FaTimes } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { MdDeliveryDining, MdEmail } from "react-icons/md";
 import { galleryData } from "./data/galleryData";
+import { CiLocationOn } from "react-icons/ci";
+import { BiWorld } from "react-icons/bi";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   /* ===== Gallery Logic ===== */
-  const categories = Object.keys(galleryData);
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  type Category = keyof typeof galleryData;
+
+  const categories = Object.keys(galleryData) as Category[];
+
+  const [activeCategory, setActiveCategory] =
+    useState<Category>(categories[0]);
+
   const [showAll, setShowAll] = useState(false);
 
   return (
@@ -334,7 +341,7 @@ export default function Home() {
       </section>
 
       {/* ================= CATEGORY + GALLERY SECTION ================= */}
-      <section id="gallery" className="py-20 bg-gray-50">
+      <section id="gallery" className="py-20 bg-pink-50">
         <div className="max-w-6xl mx-auto px-6">
           {/* ===== Title ===== */}
           <h2 className="text-3xl md:text-4xl font-bold text-pink-600 mb-10 text-center">
@@ -388,22 +395,173 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ================= DELIVERY INFO BANNER ================= */}
+      <section className="py-10 md:py-16 bg-pink-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div
+            className="flex flex-col md:flex-row items-center 
+    bg-pink-200 rounded-2xl shadow-lg overflow-hidden"
+          >
+            {/* Left Image */}
+            <div className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-80">
+              <Image
+                src="/card.png"
+                alt="Cake Delivery"
+                fill
+                className="object-cover rounded-2xl"
+              />
+            </div>
+
+            {/* Right Content */}
+            <div className="w-full md:w-1/2 p-5 sm:p-6 md:p-8 text-center md:text-left">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-900 mb-3 md:mb-4">
+                Delivery Available in Bishwanath
+              </h2>
+
+              <p className="text-blue-900 text-sm sm:text-base mb-2">
+                <CiLocationOn className="inline mr-1 text-pink-500 text-2xl" />{" "}
+                Location:{" "}
+                <span className="font-semibold">Bishwanath, Sylhet</span>
+              </p>
+
+              <p className="text-blue-900 text-sm sm:text-base mb-2">
+                <MdDeliveryDining className="inline mr-1 text-2xl text-pink-600" />
+                Delivery is{" "}
+                <span className="font-semibold text-pink-600">FREE</span> within
+                Bishwanath Bazar.
+              </p>
+
+              <p className="text-gray-600 text-sm sm:text-base mb-2">
+                <BiWorld className="inline mr-1 text-pink-600 text-2xl" /> All
+                over Bishwanath including:
+              </p>
+
+              <ul className="list-disc md:ml-6 list-inside text-gray-600 text-sm sm:text-base mb-4">
+                <li>Roshidpur 120tk</li>
+                <li>Lala Bazar 100tk</li>
+                <li>Sondiful 50tk</li>
+              </ul>
+
+              <button
+                className="mt-2 w-full sm:w-auto px-6 py-2
+        bg-pink-500 text-white rounded-full 
+        hover:bg-white hover:border hover:border-pink-600 
+        hover:text-pink-600 transition duration-300"
+              >
+                Order Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ================= Order ================= */}
-      <section id="order" className="py-20 bg-pink-50 text-center">
-        <h2 className="text-3xl font-bold text-pink-600">Place Your Order</h2>
+      <section
+        id="order"
+        className="py-20 bg-gradient-to-b from-pink-50 to-white"
+      >
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-white shadow-2xl rounded-3xl p-8 md:p-12">
+            <h2 className="text-3xl font-bold text-center text-pink-600 mb-2">
+              Place Your Order 🎂
+            </h2>
+            <p className="text-center text-gray-500 mb-10">
+              Fill out the form below and we’ll contact you shortly.
+            </p>
 
-        <form className="mt-8 max-w-md mx-auto flex flex-col gap-4">
-          <input className="p-3 border rounded-lg" placeholder="Your Name" />
-          <input className="p-3 border rounded-lg" placeholder="Phone Number" />
-          <textarea
-            className="p-3 border rounded-lg"
-            placeholder="Cake Details"
-          ></textarea>
+            <form className="grid md:grid-cols-2 gap-6">
+              {/* Name */}
+              <div className="relative">
+                <input
+                  className="w-full p-3 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  placeholder="Your Name"
+                />
+              </div>
 
-          <button className="bg-pink-500 text-white py-3 rounded-lg hover:bg-pink-600 transition">
-            Order Now 🎂
-          </button>
-        </form>
+              {/* Phone */}
+              <div className="relative">
+                <input
+                  className="w-full p-3 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  placeholder="Phone Number"
+                />
+              </div>
+
+              {/* Address */}
+              <input
+                className="p-3 border rounded-lg md:col-span-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                placeholder="Delivery Address"
+              />
+
+              {/* Details */}
+              <textarea
+                rows={4}
+                className="p-3 border rounded-lg md:col-span-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                placeholder="Cake Details (Flavor, Weight, Design...)"
+              ></textarea>
+
+              {/* Button */}
+              <button
+                type="submit"
+                className="md:col-span-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white py-3 rounded-lg font-semibold hover:scale-105 transition duration-300 shadow-lg"
+              >
+                Submit Order 🎀
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= Contact ================= */}
+      <section id="contact" className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-pink-600 mb-12">
+            Contact Us 💌
+          </h2>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {/* Phone */}
+            <a
+              href="tel:+8801XXXXXXXXX"
+              className="bg-pink-50 p-6 rounded-3xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300 block"
+            >
+              <FaPhone className="text-4xl text-pink-500 mx-auto mb-4" />
+              <h3 className="font-semibold mb-1">Call Us</h3>
+              <p className="text-gray-600">+880 1XXXXXXXXX</p>
+            </a>
+
+            {/* Facebook */}
+            <a
+              href="https://facebook.com/yourpage"
+              target="_blank"
+              className="bg-pink-50 p-6 rounded-3xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300 block"
+            >
+              <FaFacebook className="text-4xl text-blue-600 mx-auto mb-4" />
+              <h3 className="font-semibold mb-1">Facebook</h3>
+              <p className="text-gray-600">fb.com/yourpage</p>
+            </a>
+
+            {/* Instagram */}
+            <a
+              href="https://instagram.com/yourhandle"
+              target="_blank"
+              className="bg-pink-50 p-6 rounded-3xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300 block"
+            >
+              <BsInstagram className="text-4xl text-pink-500 mx-auto mb-4" />
+              <h3 className="font-semibold mb-1">Instagram</h3>
+              <p className="text-gray-600">@yourhandle</p>
+            </a>
+
+            {/* Email */}
+            <a
+              href="mailto:youremail@gmail.com"
+              className="bg-pink-50 p-6 rounded-3xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300 block"
+            >
+              <MdEmail className="text-4xl text-red-500 mx-auto mb-4" />
+              <h3 className="font-semibold mb-1">Email</h3>
+              <p className="text-gray-600">youremail@gmail.com</p>
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* ================= Footer ================= */}

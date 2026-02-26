@@ -44,4 +44,4 @@ export const galleryData = {
     "/other1.jpeg",
     "/panChini.jpeg",
   ],
-};
+} as const;
