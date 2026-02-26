@@ -92,6 +92,12 @@ export default function Home() {
               </li>
 
               <li>
+                <a href="#gallery" className="hover:text-pink-500">
+                  Gallery
+                </a>
+              </li>
+
+              <li>
                 <a href="#order" className="hover:text-pink-500">
                   Order
                 </a>
@@ -328,8 +334,13 @@ export default function Home() {
       </section>
 
       {/* ================= CATEGORY + GALLERY SECTION ================= */}
-      <section id="categories" className="py-20 bg-gray-50">
+      <section id="gallery" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
+          {/* ===== Title ===== */}
+          <h2 className="text-3xl md:text-4xl font-bold text-pink-600 mb-10 text-center">
+            Our Gallery
+          </h2>
+
           {/* ===== Category Buttons ===== */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map((cat, index) => (
@@ -347,11 +358,6 @@ export default function Home() {
               </button>
             ))}
           </div>
-
-          {/* ===== Title ===== */}
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-            Our Gallery
-          </h2>
 
           {/* ===== Gallery Grid ===== */}
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
