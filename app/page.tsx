@@ -367,7 +367,7 @@ export default function Home() {
                   src={img}
                   alt="Cake"
                   fill
-                  className="object-cover group-hover:scale-110 transition duration-500"
+                  className="object-cover"
                 />
               </div>
             ))}
